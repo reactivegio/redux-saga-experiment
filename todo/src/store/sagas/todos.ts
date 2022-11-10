@@ -14,7 +14,7 @@ export function* watchTodosLoad() {
 
 function* handleTodosLoad():any {
   const total:number = yield select(getTotal);
-  debugger;
+  
   console.log(total);
   
   try {
@@ -40,6 +40,6 @@ function* handleTodosAdd(todoAdded: any):any {
 }
 
 function getTotal(state: any) {
-  debugger;
+  
   return state.todos.todoList.length
 }

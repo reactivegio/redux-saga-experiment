@@ -22,7 +22,7 @@ export const todos = createSlice({
           }
     },
     getTodoList: (state: any=initialState, action: {payload: PayloadAction<TodoInterface>}) => {
-      debugger;
+      
       state.status = {
         loading: false,
         error: false,
@@ -37,28 +37,34 @@ export const todos = createSlice({
         ended: false
       }      
     },
-    addTodo: (state: any=initialState, action: PayloadAction<any>) => {
+    addTodo: (state: any=initialState, action: PayloadAction<any>) => {      
       state.status = {
         loading: false,
         error: false,
         ended: true
       }
-      state.todoList.push(...action.payload);
+      state.todoList.push(action.payload);
     },
     deleteTodo: (state: any=initialState, action: PayloadAction<any>) => {
+        debugger;
         state.status = {
             loading: false,
             error: false,
             ended: true
           }
-          state.todoList.filter((el:any) => el.id !== action.payload);
+          state.todoList = state.todoList.filter((el:any) => el.id !== action.payload);
     },
     updateTodo: (state: any=initialState, action: PayloadAction<any>) => {
+      debugger;
+      let indexElemToUpdated = state.todoList.findIndex((el:any) => el.id === action.payload.id);
+      state.todoList[indexElemToUpdated] = action.payload;
+
       state.status = {
           loading: false,
           error: false,
           ended: true
         }
+        
         // TODO
   },
   },
